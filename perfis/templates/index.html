@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>ConnectedIn</title>
+</head>
+	<body>
+		<h1>Bem-vindo ao Connectedin!</h1>
+		{% if perfis %}
+		<ul>
+		<!-- template tag obs: perfis é exatamente o nome da dado na lista na view-->
+			{% for perfil in perfis %}
+			<!-- variável de template -->
+				<li>
+					<!-- monta a url apartir do arquivo urls da app perfis, facilitando a manutenção. Também já passo o id logo em seguida da url -->
+					<a href="{% url 'exibir' perfil.id %}">{{perfil.nome}} / {{perfil.email}}</a>
+				</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p>Nenhum Perfil encontrado</p>
+		{% endif %}
+	</body>
+</html>
